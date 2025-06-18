@@ -17,7 +17,7 @@ export default function App() {
 			<Stack.Navigator initialRouteName="LoginScreen">
 				<Stack.Group screenOptions={headerOption}>
 					<Stack.Screen component={LoginScreen} name="LoginScreen" />
-					<Stack.Screen component={ListScreen} name="Transactions" />
+					<Stack.Screen component={ListScreen} name="ListScreen" />
 				</Stack.Group>
 			</Stack.Navigator>
 		</NavigationContainer>

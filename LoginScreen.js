@@ -3,8 +3,8 @@ import { StyleSheet, Text, View, Pressable, TextInput } from "react-native";
 import { useState } from "react";
 
 const LoginScreen = ({ navigation, route }) => {
-	const [email, setEmail] = useState("");
-	const [pass, setPass] = useState("");
+	const [email, setEmail] = useState("test@senecapolytechnic.ca");
+	const [pass, setPass] = useState("test123");
 
 	return (
 		<View style={styles.container}>
@@ -20,7 +20,7 @@ const LoginScreen = ({ navigation, route }) => {
 			<Pressable
 				style={({ pressed }) => [styles.button, { backgroundColor: pressed ? "lightblue" : "dodgerblue" }]}
 				onPress={() => {
-					if (email === "test@senecapolytechnic.ca" && pass === "test123") alert("Login.");
+					if (email === "test@senecapolytechnic.ca" && pass === "test123") navigation.navigate("ListScreen");
 					else alert("No user found with those credentials.");
 				}}
 			>
