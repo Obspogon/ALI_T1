@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import LoginScreen from "./LoginScreen";
 import ListScreen from "./ListScreen";
 import DetailScreen from "./DetailScreen";
+import NewScreen from "./NewScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,7 @@ export default function App() {
 					<Stack.Screen component={LoginScreen} name="LoginScreen" />
 					<Stack.Screen component={ListScreen} name="ListScreen" />
 					<Stack.Screen component={DetailScreen} name="DetailScreen" />
+					<Stack.Screen component={NewScreen} name="NewScreen" />
 				</Stack.Group>
 			</Stack.Navigator>
 		</NavigationContainer>

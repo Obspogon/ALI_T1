@@ -54,6 +54,14 @@ const ListScreen = ({ navigation, route }) => {
 			<Pressable
 				style={({ pressed }) => [styles.button, { backgroundColor: pressed ? "lightblue" : "dodgerblue" }]}
 				onPress={() => {
+					navigation.navigate("NewScreen");
+				}}
+			>
+				<Text style={styles.buttonText}>New Transaction</Text>
+			</Pressable>
+			<Pressable
+				style={({ pressed }) => [styles.button, { backgroundColor: pressed ? "lightblue" : "dodgerblue" }]}
+				onPress={() => {
 					navigation.navigate("LoginScreen");
 				}}
 			>
