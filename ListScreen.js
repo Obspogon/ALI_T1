@@ -24,8 +24,18 @@ const ListScreen = ({ navigation, route }) => {
 							}}
 						>
 							<View>
-								<Text style={{ fontSize: 18, fontWeight: "600", color: "#2980b9" }}>Name: {item.name}</Text>
+								<Text style={{ fontSize: 18, fontWeight: "600", color: "#2980b9" }}>{item.name}</Text>
 								<Text style={{ fontSize: 16, color: item.expense ? "red" : "green" }}>${item.amount}</Text>
+							</View>
+							<View>
+								<Pressable
+									style={({ pressed }) => [styles.button, { backgroundColor: pressed ? "lightblue" : "dodgerblue" }]}
+									onPress={() => {
+										navigation.navigate("DetailScreen");
+									}}
+								>
+									<Text style={styles.buttonText}>Details</Text>
+								</Pressable>
 							</View>
 						</View>
 					);
@@ -52,7 +62,7 @@ const styles = StyleSheet.create({
 		backgroundColor: "#fff",
 		alignItems: "center",
 		justifyContent: "flex-start",
-		alignItems: "flex-start",
+		alignItems: "stretch",
 		paddingTop: 50,
 		marginHorizontal: 10,
 	},
