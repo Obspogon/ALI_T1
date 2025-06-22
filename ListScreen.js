@@ -6,6 +6,10 @@ const ListScreen = ({ navigation, route }) => {
 		{ id: 2, name: "PRESTO", amount: 15, location: "PRESTO Terminal", date: "11-4-25", expense: true, category: "Transportation" },
 		{ id: 3, name: "Paycheck", amount: 150, location: "Online", date: "12-4-25", expense: false, category: "Salary" },
 	];
+	let total = 0;
+	transactions.forEach((item) => {
+		total = item.expense ? total - item.amount : total + item.amount;
+	});
 
 	return (
 		<View style={styles.container}>
@@ -27,6 +31,14 @@ const ListScreen = ({ navigation, route }) => {
 								<Text style={{ fontSize: 16, color: item.expense ? "red" : "green" }}>${item.amount}</Text>
 							</View>
 							<View>
+								<Pressable
+									style={({ pressed }) => [styles.button, { backgroundColor: pressed ? "red" : "lightred" }]}
+									onPress={() => {
+										alert("Deleted");
+									}}
+								>
+									<Text style={styles.buttonText}>Delete</Text>
+								</Pressable>
 								<Pressable
 									style={({ pressed }) => [styles.button, { backgroundColor: pressed ? "lightblue" : "dodgerblue" }]}
 									onPress={() => {
@@ -51,6 +63,7 @@ const ListScreen = ({ navigation, route }) => {
 					return <View style={{ width: "100%", height: "1", backgroundColor: "#2980b9" }} />;
 				}}
 			/>
+			<Text style={{ fontSize: 20 }}>Total: ${total}</Text>
 			<Pressable
 				style={({ pressed }) => [styles.button, { backgroundColor: pressed ? "lightblue" : "dodgerblue" }]}
 				onPress={() => {
