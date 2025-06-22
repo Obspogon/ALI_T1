@@ -1,13 +1,14 @@
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 const DetailScreen = ({ navigation, route }) => {
+	const { id, name, amount, location, date, category, expense } = route.params;
 	return (
 		<View style={styles.container}>
-			<Text style={styles.amountStyle}>$50.00</Text>
-			<Text style={styles.nameStyle}>Name</Text>
-			<Text style={styles.textStyle}>Location</Text>
-			<Text style={styles.textStyle}>Date</Text>
-			<Text style={styles.textStyle}>Cat</Text>
+			<Text style={{ color: expense ? "red" : "green", fontSize: 70 }}>${amount}</Text>
+			<Text style={{ fontSize: 30, fontVariant: "bold" }}>{name}</Text>
+			<Text style={styles.textStyle}>{location}</Text>
+			<Text style={styles.textStyle}>{date}</Text>
+			<Text style={styles.textStyle}>{category}</Text>
 		</View>
 	);
 };
@@ -21,17 +22,7 @@ const styles = StyleSheet.create({
 		paddingTop: 10,
 		marginHorizontal: 10,
 	},
-	amountStyle: { fontSize: 70 },
-	nameStyle: { fontSize: 30, fontVariant: "bold" },
 	textStyle: { fontSize: 16 },
-	button: {
-		backgroundColor: "dodgerblue",
-		padding: 10,
-		alignItems: "center",
-		alignSelf: "center",
-		width: "100%",
-		borderRadius: 10,
-	},
 });
 
 export default DetailScreen;

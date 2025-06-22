@@ -9,7 +9,6 @@ const ListScreen = ({ navigation, route }) => {
 
 	return (
 		<View style={styles.container}>
-			<Text>Transaction</Text>
 			<FlatList
 				data={transactions}
 				keyExtractor={(item) => item.id}
@@ -31,7 +30,15 @@ const ListScreen = ({ navigation, route }) => {
 								<Pressable
 									style={({ pressed }) => [styles.button, { backgroundColor: pressed ? "lightblue" : "dodgerblue" }]}
 									onPress={() => {
-										navigation.navigate("DetailScreen");
+										navigation.navigate("DetailScreen", {
+											id: item.id,
+											name: item.name,
+											amount: item.amount,
+											expense: item.expense,
+											location: item.location,
+											date: item.date,
+											category: item.category,
+										});
 									}}
 								>
 									<Text style={styles.buttonText}>Details</Text>
