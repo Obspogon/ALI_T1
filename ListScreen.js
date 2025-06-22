@@ -15,7 +15,7 @@ const ListScreen = ({ navigation, route }) => {
 
 	return (
 		<View style={styles.container}>
-			<Text style={{ fontSize: 20 }}>Total: ${total}</Text>
+			<Text style={{ fontSize: 20 }}>Total: ${Number(total.toFixed(2))}</Text>
 			<FlatList
 				data={transactions}
 				keyExtractor={(item) => item.id}
