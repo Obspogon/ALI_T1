@@ -27,8 +27,6 @@ const ListScreen = ({ navigation, route }) => {
 								<Text style={{ fontSize: 18, fontWeight: "600", color: "#2980b9" }}>Name: {item.name}</Text>
 								<Text style={{ fontSize: 16, color: item.expense ? "red" : "green" }}>${item.amount}</Text>
 							</View>
-							<Text>{item.location}</Text>
-							<Text>{item.date}</Text>
 						</View>
 					);
 				}}
