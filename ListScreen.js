@@ -1,10 +1,12 @@
 import { StyleSheet, Text, View, Pressable, FlatList } from "react-native";
 
 const ListScreen = ({ navigation, route }) => {
-	const transactions = [
-		{ id: 1, name: "Burger", amount: 10, location: "Burger King", date: "15-3-25", expense: true, category: "Food" },
+	let transactions = [
+		{ id: 1, name: "Burger", amount: 9.99, location: "Burger King", date: "15-3-25", expense: true, category: "Food" },
 		{ id: 2, name: "PRESTO", amount: 15, location: "PRESTO Terminal", date: "11-4-25", expense: true, category: "Transportation" },
 		{ id: 3, name: "Paycheck", amount: 150, location: "Online", date: "12-4-25", expense: false, category: "Salary" },
+		{ id: 4, name: "Gift", amount: 50, location: "Online", date: "15-4-25", expense: false, category: "Other" },
+		{ id: 5, name: "Chocolate", amount: 5.99, location: "Store", date: "16-4-25", expense: true, category: "Food" },
 	];
 	let total = 0;
 	transactions.forEach((item) => {
@@ -13,6 +15,7 @@ const ListScreen = ({ navigation, route }) => {
 
 	return (
 		<View style={styles.container}>
+			<Text style={{ fontSize: 20 }}>Total: ${total}</Text>
 			<FlatList
 				data={transactions}
 				keyExtractor={(item) => item.id}
@@ -32,9 +35,13 @@ const ListScreen = ({ navigation, route }) => {
 							</View>
 							<View>
 								<Pressable
-									style={({ pressed }) => [styles.button, { backgroundColor: pressed ? "red" : "lightred" }]}
+									style={({ pressed }) => [styles.button, { backgroundColor: pressed ? "red" : "orangered" }]}
 									onPress={() => {
-										alert("Deleted");
+										// alert(`Deleted. id: ${item.id}`);
+										transactions = transactions.filter((t) => {
+											return t.id !== item.id;
+										});
+										navigation.navigate("ListScreen");
 									}}
 								>
 									<Text style={styles.buttonText}>Delete</Text>
@@ -63,7 +70,6 @@ const ListScreen = ({ navigation, route }) => {
 					return <View style={{ width: "100%", height: "1", backgroundColor: "#2980b9" }} />;
 				}}
 			/>
-			<Text style={{ fontSize: 20 }}>Total: ${total}</Text>
 			<Pressable
 				style={({ pressed }) => [styles.button, { backgroundColor: pressed ? "lightblue" : "dodgerblue" }]}
 				onPress={() => {
@@ -75,7 +81,7 @@ const ListScreen = ({ navigation, route }) => {
 			<Pressable
 				style={({ pressed }) => [styles.button, { backgroundColor: pressed ? "lightblue" : "dodgerblue" }]}
 				onPress={() => {
-					navigation.navigate("LoginScreen");
+					navigation.replace("LoginScreen");
 				}}
 			>
 				<Text style={styles.buttonText}>Logout</Text>
@@ -95,7 +101,6 @@ const styles = StyleSheet.create({
 		marginHorizontal: 10,
 	},
 	button: {
-		backgroundColor: "dodgerblue",
 		padding: 10,
 		alignItems: "center",
 		alignSelf: "center",

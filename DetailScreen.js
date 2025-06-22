@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 
 const DetailScreen = ({ navigation, route }) => {
-	const { id, name, amount, location, date, category, expense } = route.params;
+	const { name, amount, location, date, category, expense } = route.params;
 	return (
 		<View style={styles.container}>
 			<Text style={{ color: expense ? "red" : "green", fontSize: 70 }}>${amount}</Text>

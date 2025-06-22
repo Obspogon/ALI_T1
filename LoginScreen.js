@@ -20,7 +20,7 @@ const LoginScreen = ({ navigation, route }) => {
 			<Pressable
 				style={({ pressed }) => [styles.button, { backgroundColor: pressed ? "lightblue" : "dodgerblue" }]}
 				onPress={() => {
-					if (email === "test@senecapolytechnic.ca" && pass === "test123") navigation.navigate("ListScreen");
+					if (email === "test@senecapolytechnic.ca" && pass === "test123") navigation.replace("ListScreen");
 					else alert("No user found with those credentials.");
 				}}
 			>
