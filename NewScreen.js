@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, TextInput, Pressable } from "react-native";
 import { useState } from "react";
 import CheckBox from "expo-checkbox";
+import Transactions from "./Transactions";
 
 const NewScreen = ({ navigation, route }) => {
 	const [name, setName] = useState("");
@@ -30,7 +31,7 @@ const NewScreen = ({ navigation, route }) => {
 			</View>
 			<View style={styles.inputContainer}>
 				<Text style={styles.inputLabel}>Date</Text>
-				<TextInput style={styles.inputStyle} value={date} placeholder="Date" onChangeText={setDate} keyboardType="default"></TextInput>
+				<TextInput style={styles.inputStyle} value={date} placeholder="DD-M-YY" onChangeText={setDate} keyboardType="default"></TextInput>
 			</View>
 			<View style={styles.inputContainer}>
 				<Text style={styles.inputLabel}>Category</Text>
@@ -40,9 +41,12 @@ const NewScreen = ({ navigation, route }) => {
 				style={({ pressed }) => [styles.button, { backgroundColor: pressed ? "lightblue" : "dodgerblue" }]}
 				onPress={() => {
 					if (name === "" || amount === null || location === "" || date === "" || category === "") {
-						alert("You need to fill out all fields.");
+						alert("You must fill in all fields.");
 					} else {
-						alert("Add Successful.");
+						let newId = Transactions.length + 10;
+						let newTransaction = { id: newId, name: name, amount: amount, location: location, date: date, expense: expense, category: category };
+						Transactions.push(newTransaction);
+						navigation.replace("ListScreen");
 					}
 				}}
 			>
