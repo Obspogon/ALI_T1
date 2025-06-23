@@ -5,14 +5,15 @@ import Transactions from "./Transactions";
 const ListScreen = ({ navigation, route }) => {
 	const [transactions, setTransactions] = useState(Transactions);
 
-	let total = 0;
+	let total = 0.0;
 	transactions.forEach((item) => {
 		total = item.expense ? total - item.amount : total + item.amount;
 	});
+	total = parseFloat(total).toFixed(2);
 
 	return (
 		<View style={styles.container}>
-			<Text style={{ fontSize: 20 }}>Total: ${Number(total.toFixed(2))}</Text>
+			<Text style={{ fontSize: 20 }}>Total: ${total}</Text>
 			<FlatList
 				data={transactions}
 				keyExtractor={(item) => item.id}
@@ -34,7 +35,6 @@ const ListScreen = ({ navigation, route }) => {
 								<Pressable
 									style={({ pressed }) => [styles.button, { backgroundColor: pressed ? "red" : "orangered" }]}
 									onPress={() => {
-										// alert(`Deleted. id: ${item.id}`);
 										setTransactions(
 											transactions.filter((t) => {
 												return t.id !== item.id;
