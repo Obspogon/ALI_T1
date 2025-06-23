@@ -4,7 +4,7 @@ import CheckBox from "expo-checkbox";
 
 const NewScreen = ({ navigation, route }) => {
 	const [name, setName] = useState("");
-	const [amount, setAmount] = useState(0);
+	const [amount, setAmount] = useState(null);
 	const [location, setLocation] = useState("");
 	const [date, setDate] = useState("");
 	const [expense, setExpense] = useState(true);
@@ -39,7 +39,11 @@ const NewScreen = ({ navigation, route }) => {
 			<Pressable
 				style={({ pressed }) => [styles.button, { backgroundColor: pressed ? "lightblue" : "dodgerblue" }]}
 				onPress={() => {
-					alert("Add.");
+					if (name === "" || amount === null || location === "" || date === "" || category === "") {
+						alert("You need to fill out all fields.");
+					} else {
+						alert("Add Successful.");
+					}
 				}}
 			>
 				<Text style={styles.buttonText}>Add Transaction</Text>
